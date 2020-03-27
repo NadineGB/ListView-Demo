@@ -1,6 +1,9 @@
 package com.example.listviewdemo;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -27,9 +30,17 @@ public class MainActivity extends AppCompatActivity {
         myFamily.add("Ulla");
         myFamily.add("Yoshi");
 
+
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, myFamily);
 
         listView.setAdapter(arrayAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
+                Log.i("Ausgewälte Person", myFamily.get(i));
+            }
+        });
 
 
     }
